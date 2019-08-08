@@ -18,6 +18,8 @@ def get_distance(lon_a, lat_a, lon_b, lat_b):
     pa = atan(rb / ra * tan(rad_lat_a))
     pb = atan(rb / ra * tan(rad_lat_b))
     x = acos(sin(pa) * sin(pb) + cos(pa) * cos(pb) * cos(rad_lon_a - rad_lon_b))
+    if x == 0:
+        return x
     c1 = (sin(x) - x) * (sin(pa) + sin(pb))**2 / cos(x / 2)**2
     c2 = (sin(x) + x) * (sin(pa) - sin(pb))**2 / sin(x / 2)**2
     dr = flatten / 8 * (c1 - c2)
